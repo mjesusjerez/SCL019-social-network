@@ -1,4 +1,4 @@
-export const logIn = () => {
+/* export const logIn = () => {
 
 window.location.hash = '/login'; 
 
@@ -46,4 +46,4 @@ const root = document.getElementById("root");
     document.getElementById('buttonlogin').addEventListener('click', logIn)
     
 
-  };
+  }; */

@@ -1,4 +1,4 @@
-import { Bienvenida } from "./bienvenida";
+/* import { Bienvenida } from "./bienvenida";
 import { logIn } from "./login";
 import { register } from "./register";
 
@@ -18,4 +18,4 @@ export function router (){
         root.appendChild(register());
     }
 
-};
+}; */

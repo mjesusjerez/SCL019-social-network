@@ -1,4 +1,4 @@
-export const register = () => {
+/* export const register = () => {
 
 window.location.hash = '/register';
 
@@ -46,4 +46,4 @@ window.location.hash = '/register';
 
   document.getElementById('register').addEventListener('click', register)
 
-};
+}; */

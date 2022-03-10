@@ -1,11 +1,12 @@
-import { logIn } from "./login";
+
 // import { register } from "./register";
 
-export function Bienvenida () { 
+export const bienvenida = () => { 
 
-const headerbienvenida = document.getElementById("header");
+  const divbienvenida = document.createElement("div");
+const headerbienvenida = document.createElement("div");
 // const root = document.getElementById("root");
-
+ 
   let headerdiv = document.createElement("div")
   let logo = document.createElement("img")
   
@@ -32,17 +33,17 @@ const headerbienvenida = document.getElementById("header");
    entrybutton.setAttribute('id', 'entrybutton')
 
    headerbienvenida.appendChild(entrybutton)
-  
+   divbienvenida.appendChild(headerbienvenida)
   //
 
-  let ebutton = document.getElementById('entrybutton')
+  let ebutton = divbienvenida.querySelector('#entrybutton')
   ebutton.addEventListener('click', () => {
-  logIn();
-  });
+  console.log('soy un botón');
+  }); 
 
 
 
-  return headerbienvenida;
+  return divbienvenida;
 
 };
 

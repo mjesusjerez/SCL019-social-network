@@ -1,14 +1,12 @@
-
-import { register } from "./register";
-import { Bienvenida } from "./bienvenida";
-import { logIn } from "./login";
-import { router } from "./router";
+import { bienvenida } from "./view/bienvenida.js"
 
 const displayview = () => {
- document.getElementById('root').appendChild(Bienvenida());
- window.location.hash = '/bienvenida'
+  document.getElementById('root').appendChild(bienvenida());
+/*  window.location.hash = '/bienvenida'
 window.addEventListener('hashchange', () => {
-router(window.location.hash);
-})};
+router(window.location.hash);  */
+/* })}; */
+//document.getElementById('root').innerHTML = 'holaholajesu'
+}
 
-window.addEventListener('load', displayview() );
+window.addEventListener('load', displayview);

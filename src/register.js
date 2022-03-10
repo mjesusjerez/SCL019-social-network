@@ -1,19 +1,23 @@
+export const register = () => {
 
-export const register = () =>{
+window.location.hash = '/register';
+
   const header = document.getElementById("header");
   const root = document.getElementById("root");
   
   let headerdiv = document.createElement("div")
-    let logo = document.createElement("img")
+  let logo = document.createElement("img")
     
   
-    headerdiv.setAttribute("class", "headerdiv")
-    logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
-    logo.setAttribute("class", "logo")
+  headerdiv.setAttribute("class", "headerdiv")
+  logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
+  logo.setAttribute("class", "logo")
     
-    header.appendChild(headerdiv)
-    headerdiv.appendChild(logo)
+  header.appendChild(headerdiv)
+  headerdiv.appendChild(logo)
+
   //
+
   let formSignUp = document.createElement("form")
   formSignUp.setAttribute("class", "signup")
   root.appendChild(formSignUp)
@@ -41,4 +45,5 @@ export const register = () =>{
 
 
   document.getElementById('register').addEventListener('click', register)
-}
+
+};

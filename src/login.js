@@ -1,7 +1,9 @@
-export const logIn = () =>{
+export const logIn = () => {
+
+window.location.hash = '/login'; 
 
 const header = document.getElementById("header");
-  const root = document.getElementById("root");
+const root = document.getElementById("root");
   
     let headerdiv = document.createElement("div")
     let logo = document.createElement("img")
@@ -44,4 +46,4 @@ const header = document.getElementById("header");
     document.getElementById('buttonlogin').addEventListener('click', logIn)
     
 
-  }
+  };

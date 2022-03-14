@@ -1,9 +1,7 @@
-/* export const register = () => {
+export const register = () => {
 
-window.location.hash = '/register';
-
-  const header = document.getElementById("header");
-  const root = document.getElementById("root");
+  const divregister = document.createElement("div");
+  const divsignup = document.createElement("div");
   
   let headerdiv = document.createElement("div")
   let logo = document.createElement("img")
@@ -12,15 +10,16 @@ window.location.hash = '/register';
   headerdiv.setAttribute("class", "headerdiv")
   logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
   logo.setAttribute("class", "logo")
-    
-  header.appendChild(headerdiv)
+  
+  divregister.appendChild(headerdiv)
   headerdiv.appendChild(logo)
+  divregister.appendChild(divsignup)
 
   //
 
   let formSignUp = document.createElement("form")
   formSignUp.setAttribute("class", "signup")
-  root.appendChild(formSignUp)
+  divsignup.appendChild(formSignUp)
 
   let emailInput = document.createElement("input")
   emailInput.setAttribute("type", "email")
@@ -39,11 +38,9 @@ window.location.hash = '/register';
   buttonregister.setAttribute("value", "Regístrate")
   buttonregister.setAttribute("class", "register")
   buttonregister.setAttribute('id', 'register')
-
-
   formSignUp.appendChild(buttonregister)
 
 
-  document.getElementById('register').addEventListener('click', register)
+  return divregister;
 
-}; */
+};

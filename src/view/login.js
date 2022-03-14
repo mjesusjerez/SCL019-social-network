@@ -1,9 +1,7 @@
-/* export const logIn = () => {
+export const logIn = () => {
 
-window.location.hash = '/login'; 
-
-const header = document.getElementById("header");
-const root = document.getElementById("root");
+const divlogin = document.createElement("div");
+const login = document.createElement("div");
   
     let headerdiv = document.createElement("div")
     let logo = document.createElement("img")
@@ -13,15 +11,16 @@ const root = document.getElementById("root");
     logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
     logo.setAttribute("class", "logo")
     
-    header.appendChild(headerdiv)
+    divlogin.appendChild(headerdiv)
     headerdiv.appendChild(logo)
+    divlogin.appendChild(login)
     
   
     //
   
     let formlogin = document.createElement("form")
     formlogin.setAttribute("class", "login")
-    root.appendChild(formSignUp)
+    login.appendChild(formlogin)
   
     let emailInput = document.createElement("input")
     emailInput.setAttribute("type", "email")
@@ -42,8 +41,7 @@ const root = document.getElementById("root");
     buttonlogin.setAttribute('id', 'buttonlogin')
     formlogin.appendChild(buttonlogin)
 
-
-    document.getElementById('buttonlogin').addEventListener('click', logIn)
     
+    return divlogin;
 
-  }; */
+  };

@@ -1,3 +1,5 @@
+import { logIn } from "../view/login.js";
+
 export const register = () => {
 
   window.location.hash = '#/register';
@@ -53,9 +55,14 @@ export const register = () => {
   const logbuttonin = document.createElement('button')
   logbuttonin.setAttribute('type', 'button')
   logbuttonin.setAttribute('class', 'logbuttonin')
+  logbuttonin.setAttribute('id', 'logbuttonin')
   logbuttonin.innerHTML = 'Ingresar'
   divregister.appendChild(logbuttonin)
 
+  let buttonl = divregister.querySelector('#logbuttonin')
+  buttonl.addEventListener('click', () =>{
+    logIn()
+  })
 
   return divregister;
 

@@ -1,5 +1,7 @@
 export const register = () => {
 
+  window.location.hash = '#/register';
+
   const divregister = document.createElement("div");
   const divsignup = document.createElement("div");
   
@@ -14,6 +16,8 @@ export const register = () => {
   divregister.appendChild(headerdiv)
   headerdiv.appendChild(logo)
   divregister.appendChild(divsignup)
+  
+ 
 
   //
 
@@ -39,6 +43,18 @@ export const register = () => {
   buttonregister.setAttribute("class", "register")
   buttonregister.setAttribute('id', 'register')
   formSignUp.appendChild(buttonregister)
+
+
+  let logintext = document.createElement('p')
+  logintext.setAttribute('class', 'logintext')
+  logintext.innerHTML = '¿Ya tienes una cuenta?'
+  divregister.appendChild(logintext)
+
+  const logbuttonin = document.createElement('button')
+  logbuttonin.setAttribute('type', 'button')
+  logbuttonin.setAttribute('class', 'logbuttonin')
+  logbuttonin.innerHTML = 'Ingresar'
+  divregister.appendChild(logbuttonin)
 
 
   return divregister;

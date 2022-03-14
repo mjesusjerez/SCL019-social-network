@@ -1,5 +1,7 @@
 export const logIn = () => {
 
+  window.location.hash = '#/login'
+
 const divlogin = document.createElement("div");
 const login = document.createElement("div");
   

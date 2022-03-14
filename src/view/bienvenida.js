@@ -1,3 +1,6 @@
+import { logIn } from "../view/login.js"
+import { register } from "../view/register.js";
+
 export const bienvenida = () => { 
 
 const divbienvenida = document.createElement("div");
@@ -24,7 +27,6 @@ let logo = document.createElement("img")
   const entrybutton = document.createElement('button')
  
   entrybutton.setAttribute('type', 'button')
-  entrybutton.setAttribute('name', '¡Quiero ser parte!')
   entrybutton.setAttribute('class', 'entrybutton')
   entrybutton.setAttribute('id', 'entrybutton')
   entrybutton.innerHTML = "¡Quiero ser parte!"
@@ -36,7 +38,7 @@ let logo = document.createElement("img")
 
   let ebutton = divbienvenida.querySelector('#entrybutton')
   ebutton.addEventListener('click', () => {
-  console.log('soy un botón');
+  register()
   }); 
 
 

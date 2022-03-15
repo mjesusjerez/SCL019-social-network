@@ -53,6 +53,7 @@ body{
     
 }
 
+
 .register{
     font-family: 'RocaTwo-Bold';
     padding: 10px;
@@ -180,23 +181,26 @@ color: #FEFEE3;
 
 /* MEDIA QUERIES */
 
-@media only screen and (min-width: 720px){
+@media only screen and (max-width: 320px){
 
 body{
-background-color: #f0dbe0;
+background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
+background-size: 80%;
+background-repeat: no-repeat;
+background-position: 50% 200%;
 }
-        
-      
-#header {
-display: flex;
-flex-direction: column;
+
+.welcoming {
+font-size: 10px;
+
 }
-        
-.headerdiv{
-display: flex;
-align-items: center;
-justify-content: center;
+
+
 }
+
+@media only screen and (min-width: 720px){
+
+
 
 .signup {
 display: flex;
@@ -338,5 +342,41 @@ text-align: center;
 margin-left: 2%;
 margin-right: 40%;
 }
+
+}
+
+@media only screen and (max-width: 2240px) {
+
+.logo{
+width:50%;
+}
+
+.logoregister {
+width: 50%    
+}
+
+body{
+background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
+background-size: 35%;
+background-repeat: no-repeat;
+background-position: 100% -50%;
+}
+
+.entrybutton{
+padding: 20px;
+width: 20%;
+height: 15%;
+margin-right: 30%;
+
+}
+
+.welcoming {
+font-size: 30px;
+text-align: center;
+margin-left: 10%;
+margin-right: 40%;
+margin-top: 2%
+}
+
 
 }

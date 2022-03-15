@@ -2,8 +2,8 @@ export const logIn = () => {
 
   window.location.hash = '#/login'
 
-const divlogin = document.createElement("div");
-const login = document.createElement("div");
+ const divlogin = document.createElement("div");
+ const login = document.createElement("div");
   
     let headerdiv = document.createElement("div")
     let logo = document.createElement("img")
@@ -26,13 +26,13 @@ const login = document.createElement("div");
   
     let emailInput = document.createElement("input")
     emailInput.setAttribute("type", "email")
-    emailInput.setAttribute("class", "email")
+    emailInput.setAttribute("class", "emaillogin")
     emailInput.setAttribute("placeholder", "ejemplo@email.com")
     formlogin.appendChild(emailInput)
   
     let passwordInput = document.createElement("input")
     passwordInput.setAttribute("type", "password")
-    passwordInput.setAttribute("class", "password")
+    passwordInput.setAttribute("class", "passwordlogin")
     passwordInput.setAttribute("placeholder", "contraseña")
     formlogin.appendChild(passwordInput)
   

@@ -36,7 +36,14 @@ body{
     gap: 30px;
 }
 
-
+.login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    padding: 15px;
+    gap: 30px; 
+}
 
 
 /* ELEMENTOS  */
@@ -45,7 +52,10 @@ body{
     width: 70%;
     
 }
+
+
 .register{
+    font-family: 'RocaTwo-Bold';
     padding: 10px;
     width: 60%;
     height: 15%;
@@ -60,10 +70,23 @@ body{
     padding: 15px;
     width: 90%;
     height: 15%;
-    
 }
 
 .password {
+    border-radius: 30px;
+    padding: 15px;
+    width: 90%;
+    height: 15%;
+}
+
+.emaillogin {
+    border-radius: 30px;
+    padding: 15px;
+    width: 90%;
+    height: 15%;
+}
+
+.passwordlogin {
     border-radius: 30px;
     padding: 15px;
     width: 90%;
@@ -107,25 +130,77 @@ cursor: pointer;
 color: #FEFEE3;
 }
 
+.logintext {
+font-family: 'RocaTwo-Bold';
+font-size: 20px;
+float: right;
+color: #f95327;
+}
+
+.logbuttonin {
+font-family: 'RocaTwo-Bold';
+background-color: whitesmoke;
+color: #f95327;
+padding: 10px;
+width: 10%;
+height: 15%;
+border-radius: 40px;
+border-color: whitesmoke;
+border: none;
+margin-top: 30px;
+box-shadow: inset 0 0 0 0 #e25623;
+transition: .3s ease all;
+}
+
+.logbuttonin:hover{ 
+box-shadow: inset 200px 0 0 0 #e25623;
+cursor: pointer;
+color: #FEFEE3;
+}
+
+.buttonlogin {
+font-family: 'RocaTwo-Bold';
+background-color: whitesmoke;
+color: #f95327;
+padding: 10px;
+width: 10%;
+height: 15%;
+border-radius: 30px;
+border-color: whitesmoke;
+border: none;
+margin-top: 30px;
+box-shadow: inset 0 0 0 0 #e25623;
+transition: .3s ease all;
+}
+
+.buttonlogin:hover{ 
+box-shadow: inset 250px 0 0 0 #e25623;
+cursor: pointer;
+color: #FEFEE3;
+}
+
 /* MEDIA QUERIES */
+
+@media only screen and (max-width: 320px){
+
+body{
+background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
+background-size: 80%;
+background-repeat: no-repeat;
+background-position: 50% 200%;
+}
+
+.welcoming {
+font-size: 10px;
+
+}
+
+
+}
 
 @media only screen and (min-width: 720px){
 
-body{
-background-color: #f0dbe0;
-}
-        
-      
-#header {
-display: flex;
-flex-direction: column;
-}
-        
-.headerdiv{
-display: flex;
-align-items: center;
-justify-content: center;
-}
+
 
 .signup {
 display: flex;
@@ -143,25 +218,36 @@ width: 40%;
 .register{
 padding: 10px;
 width: 40%;
-height: 15%;
-border-radius: 30px;
-background-color: #f95327;
-color:white;
-border:none;
 }
 
 .email {
-border-radius: 30px;
 padding: 15px;
 width: 50%;
-height: 15%;
 }
         
 .password {
-border-radius: 30px;
 padding: 15px;
 width: 50%;
-height: 15%;
+}
+
+.emaillogin {
+padding: 15px;
+width: 50%;
+}
+    
+.passwordlogin {
+padding: 15px;
+width: 50%;
+}
+
+.buttonlogin{
+padding: 20px;
+width: 80%;
+}
+
+.logbuttonin{
+padding: 20px;
+width: 40%;
 }
 
 body{
@@ -187,12 +273,43 @@ padding: 30px;
 gap: 30px;
 }
 
+.login{
+display:inline-flex;
+width: 40%;
+padding: 30px;
+gap: 30px;
+}
+
 .email{
-padding:20px;
+padding:15px;
+width: 80%;
 }
 
 .password{
-padding:20px;
+padding:15px;
+width: 80%;
+}
+
+.emaillogin {
+padding: 15px;
+width: 80%;
+}
+        
+.passwordlogin {
+padding: 15px;
+width: 80%;
+}
+
+.buttonlogin{
+font-size: 20px;
+padding: 8px;
+width: 60%;
+}
+
+.logbuttonin{
+font-size: 20px;
+padding: 8px;
+width: 20%;
 }
     
 body{
@@ -225,5 +342,41 @@ text-align: center;
 margin-left: 2%;
 margin-right: 40%;
 }
+
+}
+
+@media only screen and (max-width: 2240px) {
+
+.logo{
+width:50%;
+}
+
+.logoregister {
+width: 50%    
+}
+
+body{
+background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
+background-size: 35%;
+background-repeat: no-repeat;
+background-position: 100% -50%;
+}
+
+.entrybutton{
+padding: 20px;
+width: 20%;
+height: 15%;
+margin-right: 30%;
+
+}
+
+.welcoming {
+font-size: 30px;
+text-align: center;
+margin-left: 10%;
+margin-right: 40%;
+margin-top: 2%
+}
+
 
 }

@@ -8,8 +8,8 @@ export const logIn = () => {
     let headerdiv = document.createElement("div")
     let logo = document.createElement("img")
     
-  
     headerdiv.setAttribute("class", "headerdiv")
+    divlogin.setAttribute("class", "divlogin")
     logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
     logo.setAttribute("class", "logo")
     

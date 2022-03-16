@@ -45,6 +45,18 @@ body{
     gap: 30px; 
 }
 
+.divregister{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.divlogin{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
 
 /* ELEMENTOS  */
 
@@ -52,7 +64,6 @@ body{
     width: 70%;
     
 }
-
 
 .register{
     font-family: 'RocaTwo-Bold';
@@ -181,7 +192,7 @@ color: #FEFEE3;
 
 /* MEDIA QUERIES */
 
-@media only screen and (max-width: 320px){
+@media only screen and (max-width: 480px){
 
 body{
 background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
@@ -190,17 +201,31 @@ background-repeat: no-repeat;
 background-position: 50% 200%;
 }
 
-.welcoming {
-font-size: 10px;
+.logbuttonin{
+padding: 15px;
+width: 45%;
+}
+
+.buttonlogin{
+padding: 15px;
+width: 45%;
+}
+
+.divregister{
+flex-direction: column;
+display: flex;
+align-items: center;
+}
+
+.divlogin{
+flex-direction: column;
+display: flex;
+align-items: center;
+}
 
 }
 
-
-}
-
-@media only screen and (min-width: 720px){
-
-
+@media only screen and (min-width: 768px){
 
 .signup {
 display: flex;
@@ -217,37 +242,37 @@ width: 40%;
 
 .register{
 padding: 10px;
-width: 40%;
+width: 80%;
 }
 
 .email {
 padding: 15px;
-width: 50%;
+width: 180%;
 }
         
 .password {
 padding: 15px;
-width: 50%;
+width: 180%;
 }
 
 .emaillogin {
 padding: 15px;
-width: 50%;
+width: 180%;
 }
     
 .passwordlogin {
 padding: 15px;
-width: 50%;
+width: 180%;
 }
 
 .buttonlogin{
-padding: 20px;
-width: 80%;
+padding: 15px;
+width: 100%;
 }
 
 .logbuttonin{
-padding: 20px;
-width: 40%;
+padding: 15px;
+width: 30%;
 }
 
 body{
@@ -256,6 +281,7 @@ background-size: 60%;
 background-repeat: no-repeat;
 background-position: 50% -900%;
 }
+
 
 }
 
@@ -282,28 +308,38 @@ gap: 30px;
 
 .email{
 padding:15px;
-width: 80%;
+width: 300%;
+margin-right: 80%;
 }
 
 .password{
 padding:15px;
-width: 80%;
+width: 300%;
+margin-right: 80%;
+}
+
+.register{
+padding: 8px;
+width: 270%;
+margin-right: 80%;
 }
 
 .emaillogin {
 padding: 15px;
-width: 80%;
+width: 300%;
+margin-right: 80%;
 }
         
 .passwordlogin {
 padding: 15px;
-width: 80%;
+width: 300%;
+margin-right: 80%;
 }
 
 .buttonlogin{
-font-size: 20px;
 padding: 8px;
-width: 60%;
+width: 270%;
+margin-right: 80%;
 }
 
 .logbuttonin{
@@ -345,15 +381,11 @@ margin-right: 40%;
 
 }
 
-@media only screen and (max-width: 2240px) {
+@media only screen and (min-width: 2240px) {
 
 .logo{
 width:50%;
-}
-
-.logoregister {
-width: 50%    
-}
+}    
 
 body{
 background-image: url(https://64.media.tumblr.com/e4039ebf1c9ee5f8380645ce3e3a6c7c/93408afe6e9d0c2e-5a/s540x810/dd92bed40b6ca0afaa374f1f74804ce47e288681.png);
@@ -377,6 +409,5 @@ margin-left: 10%;
 margin-right: 40%;
 margin-top: 2%
 }
-
 
 }

@@ -64,6 +64,29 @@ export const register = () => {
     logIn()
   })
 
+  let buttongoogle = document.createElement('button')
+    buttongoogle.setAttribute('type', 'button')
+    buttongoogle.setAttribute('class', 'buttongoogle')
+    buttongoogle.innerHTML = 'Ingresar con google'
+    divregister.appendChild(buttongoogle)
+
+
   return divregister;
 
 };
+
+//firebase
+
+
+const auth = getAuth();
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in
+    const user = userCredential.user;
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });

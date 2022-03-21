@@ -1,7 +1,7 @@
 import { bienvenida } from "../view/bienvenida.js";
 import { logIn } from "../view/login.js";
 import { register } from "../view/register.js";
-//import { wall } from "../view/muro.js"
+import { wall } from "../view/muro.js"
 
 export function router (){
 
@@ -20,9 +20,9 @@ export function router (){
         root.appendChild(register());
     }
 
-   /*  if (window.location.hash === '#/wall'){
+    if (window.location.hash === '#/wall'){
         root.appendChild(wall())
     }
- */
+ 
     
 }; 

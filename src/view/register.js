@@ -1,4 +1,7 @@
-import { logIn } from "../view/login.js";
+
+import { logingoogle } from "../lib/firebase.js"
+import { logIn } from "./login.js";
+import { passregister } from "../lib/firebase.js";
 
 export const register = () => {
 
@@ -30,12 +33,14 @@ export const register = () => {
 
   let emailInput = document.createElement("input")
   emailInput.setAttribute("type", "email")
+  emailInput.setAttribute("id", "email")
   emailInput.setAttribute("class", "email")
   emailInput.setAttribute("placeholder", "ejemplo@email.com")
   formSignUp.appendChild(emailInput)
 
   let passwordInput = document.createElement("input")
   passwordInput.setAttribute("type", "password")
+  passwordInput.setAttribute("id", "password")
   passwordInput.setAttribute("class", "password")
   passwordInput.setAttribute("placeholder", "contraseña")
   formSignUp.appendChild(passwordInput)
@@ -43,8 +48,8 @@ export const register = () => {
   let buttonregister = document.createElement("input")
   buttonregister.setAttribute("type", "submit")
   buttonregister.setAttribute("value", "Regístrate")
-  buttonregister.setAttribute("class", "register")
-  buttonregister.setAttribute('id', 'register')
+  buttonregister.setAttribute("class", "buttonregister")
+  buttonregister.setAttribute('id', 'buttonregister')
   formSignUp.appendChild(buttonregister)
 
 
@@ -63,31 +68,29 @@ export const register = () => {
   let buttonl = divregister.querySelector('#logbuttonin')
   buttonl.addEventListener('click', () =>{
     logIn()
+
   })
 
   let buttongoogle = document.createElement('button')
     buttongoogle.setAttribute('type', 'button')
     buttongoogle.setAttribute('class', 'buttongoogle')
+    buttongoogle.setAttribute('id', 'buttongoogle')
     buttongoogle.innerHTML = 'Ingresar con google'
     divregister.appendChild(buttongoogle)
 
+ let buttong = divregister.querySelector('#buttongoogle') 
+ buttong.addEventListener('click', () =>{
+   logingoogle()
+})
+
+let buttonCreateuser = divregister.querySelector('#buttonregister')
+buttonCreateuser.addEventListener('click', () =>{
+  passregister()
+})
 
   return divregister;
 
 };
 
-//firebase
 
 
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
-  .then((userCredential) => {
-    // Signed in
-    const user = userCredential.user;
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });

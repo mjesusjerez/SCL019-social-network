@@ -3,6 +3,8 @@ import { register } from "../view/register.js";
 
 export const bienvenida = () => { 
 
+window.location.hash = '#/bienvenida'
+
 const divbienvenida = document.createElement("div");
 const headerbienvenida = document.createElement("div");
  

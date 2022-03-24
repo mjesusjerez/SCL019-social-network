@@ -1,4 +1,4 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword  } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
+import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
 
 
 
@@ -50,24 +50,12 @@ createUserWithEmailAndPassword(auth, email, password)
 
 }
 
+export const passlogin = () => {
 
+  let emaillogin = document.getElementById("emaillogin").value
+  let passwordlogin = document.getElementById("passwordlogin").value
 
-
-
-
-
-
-
-
-
-
-
-
-
-//registro nuevos usuarios 
-/* 
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, password)
+signInWithEmailAndPassword(auth, emaillogin, passwordlogin)
   .then((userCredential) => {
     // Signed in
     const user = userCredential.user;
@@ -76,15 +64,6 @@ createUserWithEmailAndPassword(auth, email, password)
   .catch((error) => {
     const errorCode = error.code;
     const errorMessage = error.message;
-    // ..
-  })
+  });
 
-  const auth = getAuth(firebaseApp);
-
- export const registerfunct = () =>{
-
-  let email = document.getElementById('email').value 
-  let password = document.getElementById('password').value
-
-  
- }  */
+}

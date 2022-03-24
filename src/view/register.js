@@ -1,4 +1,3 @@
-
 import { logingoogle } from "../lib/firebase.js"
 import { logIn } from "./login.js";
 import { passregister } from "../lib/firebase.js";

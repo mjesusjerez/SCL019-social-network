@@ -21,7 +21,7 @@ export function router (){
     }
 
     if (window.location.hash === '#/wall'){
-        root.appendChild(wall())
+        root.appendChild(wall());
     }
  
     

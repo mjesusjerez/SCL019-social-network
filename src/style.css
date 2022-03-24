@@ -49,6 +49,7 @@ body{
     flex-direction: column;
     display: flex;
     align-items: center;
+    gap: 30px;
 }
 
 .divlogin{
@@ -57,12 +58,18 @@ body{
     align-items: center;
 }
 
+.muro {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
 
 /* ELEMENTOS  */
 
 .logo{
     width: 70%;
-    
 }
 
 .buttonregister{
@@ -122,13 +129,13 @@ body{
 
 .entrybutton {
  font-family: 'RocaTwo-Bold';
- background-color: whitesmoke;
+ background-color: white;
  color: #f95327;
  padding: 10px;
  width: 60%;
  height: 15%;
  border-radius: 30px;
- border-color: whitesmoke;
+ border-color: white;
  border: none;
  margin-top: 30px;
  box-shadow: inset 0 0 0 0 #e25623;
@@ -150,13 +157,13 @@ color: #f95327;
 
 .logbuttonin {
 font-family: 'RocaTwo-Bold';
-background-color: whitesmoke;
+background-color: white;
 color: #f95327;
 padding: 10px;
 width: 10%;
 height: 15%;
 border-radius: 40px;
-border-color: whitesmoke;
+border-color: white;
 border: none;
 margin-top: 30px;
 box-shadow: inset 0 0 0 0 #e25623;
@@ -164,20 +171,21 @@ transition: .3s ease all;
 }
 
 .logbuttonin:hover{ 
-box-shadow: inset 200px 0 0 0 #e25623;
+box-shadow: inset 400px 0 0 0 #e25623;
 cursor: pointer;
 color: #FEFEE3;
 }
 
 .buttonlogin {
 font-family: 'RocaTwo-Bold';
-background-color: whitesmoke;
+justify-content: center;
+background-color: white;
 color: #f95327;
 padding: 10px;
 width: 10%;
 height: 15%;
 border-radius: 30px;
-border-color: whitesmoke;
+border-color: white;
 border: none;
 margin-top: 30px;
 box-shadow: inset 0 0 0 0 #e25623;
@@ -188,6 +196,52 @@ transition: .3s ease all;
 box-shadow: inset 250px 0 0 0 #e25623;
 cursor: pointer;
 color: #FEFEE3;
+}
+
+#botonLogOut {
+background-color: transparent;
+border: none;
+font-size: 50px;
+color: #7d4459;
+}
+
+.postinput {
+background-color: #FEFEE3;
+width: 10cm;
+height: 4cm;
+border: solid #FEFEE3; 
+}
+
+.botonposteo {
+font-family: 'RocaTwo-Bold';
+background-color: white;
+color: #f95327;
+padding: 10px;
+width: 30%;
+height: 15%;
+border-radius: 30px;
+border: white;
+}
+
+.buttongoogle {
+font-family: 'RocaTwo-Bold';
+background-color: white;
+color: #f95327;
+padding: 10px;
+width: 20%;
+height: 15%;
+border-radius: 30px;
+border: white;
+}
+
+.buttongoogle:hover{ 
+box-shadow: inset 400px 0 0 0 #e25623;
+cursor: pointer;
+color: #FEFEE3;
+}
+
+#botonLogOut {
+align-items: top right;
 }
 
 /* MEDIA QUERIES */
@@ -208,7 +262,7 @@ width: 45%;
 
 .buttonlogin{
 padding: 15px;
-width: 45%;
+width: 15%;
 }
 
 .divregister{
@@ -223,7 +277,13 @@ display: flex;
 align-items: center;
 }
 
+.buttongoogle {
+width: 80%;
+padding: 15px;
 }
+
+}
+
 
 @media only screen and (min-width: 768px){
 
@@ -410,4 +470,10 @@ margin-right: 40%;
 margin-top: 2%
 }
 
+}
+
+.buttonlogin{
+width: 30%;
+height: 15%;
+align-items: center;
 }

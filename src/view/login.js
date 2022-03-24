@@ -1,6 +1,9 @@
+import { passlogin } from "../lib/firebase.js";
+import { wall } from "./muro.js";
+
 export const logIn = () => {
 
-  window.location.hash = '#/login'
+ window.location.hash = '#/login'
 
  const divlogin = document.createElement("div");
  const login = document.createElement("div");
@@ -27,21 +30,34 @@ export const logIn = () => {
     let emailInput = document.createElement("input")
     emailInput.setAttribute("type", "email")
     emailInput.setAttribute("class", "emaillogin")
+    emailInput.setAttribute("id", "emaillogin")
     emailInput.setAttribute("placeholder", "ejemplo@email.com")
     formlogin.appendChild(emailInput)
   
     let passwordInput = document.createElement("input")
     passwordInput.setAttribute("type", "password")
     passwordInput.setAttribute("class", "passwordlogin")
+    passwordInput.setAttribute("id", "passwordlogin")
     passwordInput.setAttribute("placeholder", "contraseña")
     formlogin.appendChild(passwordInput)
   
     let buttonlogin = document.createElement("input")
-    buttonlogin.setAttribute("type", "submit")
+    // buttonlogin.setAttribute("type", "submit")
     buttonlogin.setAttribute("value", "Login")
     buttonlogin.setAttribute("class", "buttonlogin")
     buttonlogin.setAttribute('id', 'buttonlogin')
     formlogin.appendChild(buttonlogin)
+
+    let loginbutton = divlogin.querySelector('#buttonlogin')
+    loginbutton.addEventListener('click', () =>{
+    passlogin()
+
+  }) 
+
+  let wallbutton = divlogin.querySelector("#buttonlogin")
+  wallbutton.addEventListener("click", () =>{
+    wall()
+  }); 
 
     
     return divlogin;

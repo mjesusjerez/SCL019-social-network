@@ -1,5 +1,6 @@
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
-import { onSnapshot } from "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"
+import { guardarPost, likePost } from "../lib/firebase.js";
+import { onSnapshot,query, orderBy, collection } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 
 export const wall = () =>{
 
@@ -43,6 +44,23 @@ window.location.hash = '#/wall'
    formWall.appendChild(botonPosteo)
    botonPosteo.innerHTML = "Postear"
 
+   let containerpost = document.createElement ('div') // container de todos los post
+   containerpost.setAttribute('id', 'containerpost')
+   containerpost.setAttribute('class', 'containerpost')
+   containerwall.appendChild(containerpost)
+
+   let postindiv = document.createElement('div') // div para cada post
+   postindiv.setAttribute('id', 'postindiv')
+   postindiv.setAttribute('class', 'postindiv')
+   containerpost.appendChild(postindiv)
+
+   let contenido = document.createElement('p')  // contenido post
+   contenido.setAttribute('id','contenido')
+   contenido.setAttribute('class', 'contenido')
+   postindiv.appendChild(contenido)
+
+
+  //botón logout
    let botonSalir = containerwall.querySelector('#botonLogOut');
    console.log(botonSalir)
     botonSalir.addEventListener('click', () => {
@@ -52,11 +70,82 @@ window.location.hash = '#/wall'
 
  return containerwall;
 
+
+
+
+//FUNCION MOSTRAR POST
+
+const postcontainer = containerwall.querySelector('#contenido')
+
+async function mostrarpost(){
+
+  const qry = query(collection(gFs, "publicaciones"), orderBy("date","desc"))
+  onSnapshot (qry, (querySnapshot) => {
+    wall.innerHTML = ''
+
+    querySnapshot.forEach(doc=>{
+    
+      const post = doc.data();
+
+      const userId = getAuth().currentUser.uid
+
+      if (post.userId == userId){
+      html+=`
+              <div class="post1">
+               <h2 class="nombreUsuario"> ${post.name}</h2>
+              <textarea class="comentario" readonly>${post.descripcion}</textarea>
+              <div class="btnsPost">
+                 <input class="contador" id="contador" type="number"  value="${task.likeCounter}" name="" readonly /> 
+                 <button class="heart"  value=${doc.id} ><i class="fa-regular fa-heart"></i></button> 
+                 <button class="btnDelete" data-id="${doc.id}">Borrar</button>
+                 <button class="btnEdit" data-id="${doc.id}">Editar</button>
+                 </div>
+          
+              </div>
+              </div>`
+
+     
+
+
+    }
+    else{
+
+      html+=`
+              <div class="post1">
+              <h2 class="nombreUsuario"> ${post.name}</h2>
+                <textarea class="comentario" readonly>${post.descripcion}</textarea>
+                 <div class="btnsPost">
+                 <input class="contador" id="contador" type="number"  value="${task.likeCounter}" name="" readonly /> 
+                 <button class="heart"  value=${doc.id} ><i class="fa-regular fa-heart"></i></button> 
+                 </div>
+          
+              </div>
+              </div>`
+    }
+    
+    
+    
+    
+    
+  })
+  
+  })
+
+  containerPost.innerHTML = html
+
 }
 
-const auth = getAuth();
 
-  // CERRAR SESION
+
+
+
+
+
+
+
+
+  // FUNCIÓN CERRAR SESION
+  const auth = getAuth();
 
    function logOut() {
     signOut(auth).then(() => {
@@ -65,4 +154,8 @@ const auth = getAuth();
     }).catch((error) => {
       // An error happened.
     });
-  };
+   }
+
+   
+    
+}

@@ -1,4 +1,5 @@
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
+import { onSnapshot } from "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"
 
 export const wall = () =>{
 

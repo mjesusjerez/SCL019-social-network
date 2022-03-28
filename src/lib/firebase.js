@@ -1,5 +1,5 @@
 import { getAuth, GoogleAuthProvider, signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js';
-
+import { onSnapshot, addDoc, collection, getFirestore } from "https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"
 
 
 export const logingoogle = () =>{
@@ -67,3 +67,15 @@ signInWithEmailAndPassword(auth, emaillogin, passwordlogin)
   });
 
 }
+const gFs = getFirestore(app)
+
+export const guardarPost = (post) =>{
+ const docfirestore = addDoc(collection(gFs, "publicaciones"),{
+   post:post,
+   email: auth.currentUser.email,
+   UserId: auth.currentUser.UID,
+   like:[]
+ })
+return docfirestore
+}
+

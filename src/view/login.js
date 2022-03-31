@@ -42,7 +42,6 @@ export const logIn = () => {
     formlogin.appendChild(passwordInput)
   
     let buttonlogin = document.createElement("input")
-    // buttonlogin.setAttribute("type", "submit")
     buttonlogin.setAttribute("value", "Login")
     buttonlogin.setAttribute("class", "buttonlogin")
     buttonlogin.setAttribute('id', 'buttonlogin')

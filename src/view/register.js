@@ -35,14 +35,32 @@ export const register = () => {
   emailInput.setAttribute("id", "email")
   emailInput.setAttribute("class", "email")
   emailInput.setAttribute("placeholder", "ejemplo@email.com")
+  emailInput.setAttribute("required", "")
   formSignUp.appendChild(emailInput)
+  //error mail
+  // let emailError = document.createElement("span");
+  // emailError.setAttribute("class", "errorcorreo");
+  // formSignUp.appendChild(emailError);
 
   let passwordInput = document.createElement("input")
   passwordInput.setAttribute("type", "password")
   passwordInput.setAttribute("id", "password")
   passwordInput.setAttribute("class", "password")
   passwordInput.setAttribute("placeholder", "contraseña")
+  passwordInput.setAttribute("required", "")
   formSignUp.appendChild(passwordInput)
+  //error contraseña
+  // let passwordError = document.createElement("span");
+  // passwordError.setAttribute("class", "errorcontrasena");
+  // formSignUp.appendChild(passwordError);
+
+  let userName = document.createElement("input");
+  userName.setAttribute("type", "text");
+  userName.setAttribute("placeholder", "nombre de usuario");
+  userName.setAttribute("id", "userName");
+  userName.setAttribute("class", "userName");
+  userName.setAttribute("required", "");
+  formSignUp.appendChild(userName);
 
   let buttonregister = document.createElement("input")
   buttonregister.setAttribute("type", "submit")

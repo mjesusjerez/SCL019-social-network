@@ -1,11 +1,12 @@
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
-import { guardarPost, likePost } from "../lib/firebase.js";
-import { onSnapshot,query, orderBy, collection } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
+import { app, db, auth } from "../lib/firebase.js";
+import { collection, addDoc, Timestamp, query, orderBy, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 
 export const wall = () =>{
 
 window.location.hash = '#/wall'
 
+//VISTA MURO
    const containerwall = document.createElement('div')
    const headerwall = document.createElement('div')
 
@@ -18,6 +19,8 @@ window.location.hash = '#/wall'
    logo.setAttribute("src", "https://64.media.tumblr.com/9759038804c96b09f26666eda4ce9e5e/f80f47decba8e47b-06/s1280x1920/4cfe6992b169e9bd3d5c7fc7b388f798aaa9ab82.png")
    logo.setAttribute("class", "logo")
 
+   //BOTON LOGOUT
+
    const botonLogOut = document.createElement("button")
    botonLogOut.setAttribute('type', 'button')
    botonLogOut.setAttribute('class', 'fa fa-sign-out')
@@ -27,135 +30,163 @@ window.location.hash = '#/wall'
    headerwall.appendChild(logo)
    headerwall.appendChild(botonLogOut)
 
-   //
+   //FORM
 
    let formWall = document.createElement("form")
-   formWall.setAttribute("class", "muro")
+   formWall.setAttribute("class", "post")
    headerwall.appendChild(formWall)
 
-   let postInput = document.createElement("input")
-   postInput.setAttribute("type", "text")
+   let sectionPostArea = document.createElement("div");
+   sectionPostArea.setAttribute("class", "sectionPostArea");
+   formWall.appendChild(sectionPostArea)
+
+   //AREA PARA PUBLICAR
+
+   let postInput = document.createElement("textarea") //area para escribir el post
    postInput.setAttribute("class", "postinput")
+   postInput.setAttribute("placeholder", "¿Qué hay en tu mente hoy?")
    formWall.appendChild(postInput)
 
-   let botonPosteo = document.createElement("button")
-   botonPosteo.setAttribute("type", "submit")
+   let botonPosteo = document.createElement("button") //boton para postear
    botonPosteo.setAttribute("class", "botonposteo")
+   botonPosteo.setAttribute("id", "botonposteo")
    formWall.appendChild(botonPosteo)
    botonPosteo.innerHTML = "Postear"
 
-   let containerpost = document.createElement ('div') // container de todos los post
-   containerpost.setAttribute('id', 'containerpost')
-   containerpost.setAttribute('class', 'containerpost')
-   containerwall.appendChild(containerpost)
+   let botonposteo = formWall.querySelector('#botonposteo'); //evento del boton
+   console.log(botonposteo)
+    botonposteo.addEventListener('click', () => {
+      let inputpost = formWall.querySelector(".postinput")
+      let text = inputpost.value
+    console.log(text)
+     createPost(db, text);
+    }); 
 
-   let postindiv = document.createElement('div') // div para cada post
-   postindiv.setAttribute('id', 'postindiv')
-   postindiv.setAttribute('class', 'postindiv')
-   containerpost.appendChild(postindiv)
+    // FUNCIÓN CERRAR SESION
 
-   let contenido = document.createElement('p')  // contenido post
-   contenido.setAttribute('id','contenido')
-   contenido.setAttribute('class', 'contenido')
-   postindiv.appendChild(contenido)
+  const auth = getAuth();
 
+  function logOut() {
+   signOut(auth).then(() => {
+     alert("Estas cerrando sesión, nos vemos pronto :)");
+     window.location.hash = '#/bienvenida';
+   }).catch((error) => {
+     // An error happened.
+   });
+  }
 
-  //botón logout
-   let botonSalir = containerwall.querySelector('#botonLogOut');
+  let botonSalir = containerwall.querySelector('#botonLogOut'); //boton logout
    console.log(botonSalir)
     botonSalir.addEventListener('click', () => {
      logOut();
-    });
+    }); 
+   
 
+//FUNCION PARA CREAR POSTS CON UID
 
- return containerwall;
+const createPost = async (db, text) => {
 
+  let userName;
+  if (auth.currentUser.displayName == null) { // displayname
+    let separateEmail = auth.currentUser.email.split('@');
+    userName = separateEmail[0];
+  } else {
+    userName = auth.currentUser.displayName;
+  }
 
+const docRef = await addDoc(collection(db, "post"), {
+  userid: auth.currentUser.uid,
+  name: userName,
+  text,
+  datepost: Timestamp.fromDate(new Date()),
+  likes: [],
+  likesCounter: 0,
 
-
-//FUNCION MOSTRAR POST
-
-const postcontainer = containerwall.querySelector('#contenido')
-
-async function mostrarpost(){
-
-  const qry = query(collection(gFs, "publicaciones"), orderBy("date","desc"))
-  onSnapshot (qry, (querySnapshot) => {
-    wall.innerHTML = ''
-
-    querySnapshot.forEach(doc=>{
-    
-      const post = doc.data();
-
-      const userId = getAuth().currentUser.uid
-
-      if (post.userId == userId){
-      html+=`
-              <div class="post1">
-               <h2 class="nombreUsuario"> ${post.name}</h2>
-              <textarea class="comentario" readonly>${post.descripcion}</textarea>
-              <div class="btnsPost">
-                 <input class="contador" id="contador" type="number"  value="${task.likeCounter}" name="" readonly /> 
-                 <button class="heart"  value=${doc.id} ><i class="fa-regular fa-heart"></i></button> 
-                 <button class="btnDelete" data-id="${doc.id}">Borrar</button>
-                 <button class="btnEdit" data-id="${doc.id}">Editar</button>
-                 </div>
-          
-              </div>
-              </div>`
-
-     
-
-
-    }
-    else{
-
-      html+=`
-              <div class="post1">
-              <h2 class="nombreUsuario"> ${post.name}</h2>
-                <textarea class="comentario" readonly>${post.descripcion}</textarea>
-                 <div class="btnsPost">
-                 <input class="contador" id="contador" type="number"  value="${task.likeCounter}" name="" readonly /> 
-                 <button class="heart"  value=${doc.id} ><i class="fa-regular fa-heart"></i></button> 
-                 </div>
-          
-              </div>
-              </div>`
-    }
-    
-    
-    
-    
-    
-  })
-  
-  })
-
-  containerPost.innerHTML = html
+}); 
 
 }
 
+//FUNCION PARA MOSTRAR POSTS CON NOMBRE DE USUARIA
+
+const showPost = async () => {
+
+  const postAll = query(collection(db, "post"), orderBy("datepost", "desc"));
+  const querySnapshot = await getDocs(postAll);
+
+  // CONTAINER PARA LOS POSTS
+  
+  let postContainer = document.createElement("div");
+  postContainer.setAttribute("id", "postContainer");
+  postContainer.setAttribute("class", "postContainer");
+  // postContainer.innerHTML= "";
+  querySnapshot.forEach((documento) => {
+
+    //aquí creamos los componentes que contendrán cada nueva publicación y que serán recorridos por el ciclo
+
+    // div para los posts individuales
+    const divPost = document.createElement("div");
+    divPost.setAttribute("class", "divPost");
+
+    //div uid 
+    const divNombre = document.createElement("div");
+    divNombre.setAttribute("class", "divNombre");
+
+    //nombre de la usuaria
+    const pUser = document.createElement("p");
+    pUser.setAttribute("class", "pUser");
+
+    //texto 
+    const pPost = document.createElement("p");
+    pPost.setAttribute("class", "pPost");
+
+    pUser.innerHTML = documento.data().name;
+    pPost.innerHTML = documento.data().text;
 
 
+  containerwall.appendChild(postContainer);
+  postContainer.appendChild(divPost);
+  divPost.appendChild(divNombre);
+  divNombre.appendChild(pUser);
+  divPost.appendChild(pPost);
 
+  // FUNCION PARA BORRAR
+  const deletePost = async (id) => {
+    await deleteDoc(doc(db, 'post', id));
+    console.log(await deleteDoc);
+  };
 
+  if (documento.data().uid === auth.currentUser.uid) {
+    let userEditDelete = document.createElement("div");
+    userEditDelete.setAttribute("class", "edit-delete");
 
+   let botonDelete = document.createElement("button")
+   botonDelete.setAttribute('type', 'button')
+   botonDelete.setAttribute('class', 'fa fa-trash')
+   botonDelete.setAttribute('id', 'botonDelete')
 
+   divPost.appendChild(userEditDelete)
+   userEditDelete.appendChild(botonDelete)
 
+   botonDelete.addEventListener('click'), (post) => {
 
-
-  // FUNCIÓN CERRAR SESION
-  const auth = getAuth();
-
-   function logOut() {
-    signOut(auth).then(() => {
-      alert("Estas cerrando sesión, nos vemos pronto :)");
-      window.location.hash = '#/bienvenida';
-    }).catch((error) => {
-      // An error happened.
-    });
+    const confirmDelete = confirm('¿Estás seguro de eliminar esta publicación?');
+          if (confirmDelete == true) {
+            deletePost(post);
+            location.reload(post);
+          } 
    }
 
-   
-    
+  }
+  
+  })
+
+  
+}
+
+let valuePost = postInput.value;
+  showPost(db, valuePost);
+
+
+return containerwall;
+
 }

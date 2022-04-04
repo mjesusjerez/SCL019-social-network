@@ -317,11 +317,13 @@ color: #FEFEE3;
         color: #f95327;
       }
 
-      #botonDelete {
-        background-color: transparent;
+      .botonDelete {
+        background-color: none;
         border: none;
-        font-size: 50px;
-        color: #7d4459;
+      }
+
+      .imgDelete {
+        size: 10px;
       }
 
 

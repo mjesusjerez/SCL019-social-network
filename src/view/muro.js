@@ -1,6 +1,6 @@
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
 import { app, db, auth } from "../lib/firebase.js";
-import { collection, addDoc, Timestamp, query, orderBy, getDocs, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
+import { collection, addDoc, Timestamp, query, orderBy, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 
 export const wall = () =>{
 
@@ -153,41 +153,42 @@ const showPost = async () => {
   postContainer.appendChild(divPost);
   divPost.appendChild(divNombre);
   divNombre.appendChild(pUser);
-  divPost.appendChild(pPost);
-
+  divPost.appendChild(pPost); 
+  
   // FUNCION PARA BORRAR
   const deletePost = async (id) => {
-    await deleteDoc(doc(db, 'post', id));
+    await deleteDoc(doc(db, 'post', documento.id));
     console.log(await deleteDoc);
   };
 
-  if (documento.data().uid === auth.currentUser.uid) {
+  if (documento.data().userid === auth.currentUser.uid) {
     let userEditDelete = document.createElement("div");
     userEditDelete.setAttribute("class", "edit-delete");
 
    let botonDelete = document.createElement("button")
    botonDelete.setAttribute('type', 'button')
-   botonDelete.setAttribute('class', 'fa fa-trash')
+   botonDelete.setAttribute('class', 'botonDelete')
    botonDelete.setAttribute('id', 'botonDelete')
+
+   let imgDelete = document.createElement("img")
+   imgDelete.setAttribute("src", "https://www.iconpacks.net/icons/1/free-trash-icon-347-thumb.png")
+   imgDelete.setAttribute("class", "imgDelete")
+   botonDelete.appendChild(imgDelete)
 
    divPost.appendChild(userEditDelete)
    userEditDelete.appendChild(botonDelete)
 
-   botonDelete.addEventListener('click'), (post) => {
-
-    const confirmDelete = confirm('¿Estás seguro de eliminar esta publicación?');
+   let botonBorrar = containerwall.querySelector('#botonDelete'); 
+         botonBorrar.addEventListener('click', () => {
+         const confirmDelete = confirm('¿Estás seguro de eliminar esta publicación?');
           if (confirmDelete == true) {
             deletePost(post);
-            location.reload(post);
-          } 
-   }
+            location.reload(post)
+          }
 
-  }
-  
   })
-
-  
 }
+})
 
 let valuePost = postInput.value;
   showPost(db, valuePost);
@@ -195,4 +196,4 @@ let valuePost = postInput.value;
 
 return containerwall;
 
-}
+}}

@@ -82,15 +82,17 @@ createUserWithEmailAndPassword(auth, email, password)
 
   updateProfile(auth.currentUser, {
     displayName: userName.value
+    
   })
+
  
 
   .catch((error) => {
-    // const errorCode = error.code;
-    // const errorMessage = error.message;
+     const errorCode = error.code;
+     const errorMessage = error.message;
 
-    // console.log(errorCode);
-    // console.log(errorMessage);
+     console.log(errorCode);
+    console.log(errorMessage);
 
     // let emailMessage = document.querySelector(".errorcorreo");
     // let passwordMessage = document.querySelector(".errorcontrasena");

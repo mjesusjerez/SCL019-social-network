@@ -1,6 +1,6 @@
 import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-auth.js";
 import { app, db, auth } from "../lib/firebase.js";
-import { collection, addDoc, Timestamp, query, orderBy, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
+import { collection, addDoc, Timestamp, query, orderBy, getDocs, deleteDoc, doc, onSnapshot } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-firestore.js"
 
 export const wall = () =>{
 
@@ -32,31 +32,31 @@ window.location.hash = '#/wall'
 
    //FORM
 
-   let formWall = document.createElement("form")
+   /* let formWall = document.createElement("form")
    formWall.setAttribute("class", "post")
-   headerwall.appendChild(formWall)
+   headerwall.appendChild(formWall) */
 
    let sectionPostArea = document.createElement("div");
    sectionPostArea.setAttribute("class", "sectionPostArea");
-   formWall.appendChild(sectionPostArea)
+   containerwall.appendChild(sectionPostArea)
 
    //AREA PARA PUBLICAR
 
    let postInput = document.createElement("textarea") //area para escribir el post
    postInput.setAttribute("class", "postinput")
    postInput.setAttribute("placeholder", "¿Qué hay en tu mente hoy?")
-   formWall.appendChild(postInput)
+   sectionPostArea.appendChild(postInput)
 
    let botonPosteo = document.createElement("button") //boton para postear
    botonPosteo.setAttribute("class", "botonposteo")
    botonPosteo.setAttribute("id", "botonposteo")
-   formWall.appendChild(botonPosteo)
+   sectionPostArea.appendChild(botonPosteo)
    botonPosteo.innerHTML = "Postear"
 
-   let botonposteo = formWall.querySelector('#botonposteo'); //evento del boton
+   let botonposteo = sectionPostArea.querySelector('#botonposteo'); //evento del boton
    console.log(botonposteo)
     botonposteo.addEventListener('click', () => {
-      let inputpost = formWall.querySelector(".postinput")
+      let inputpost = sectionPostArea.querySelector(".postinput")
       let text = inputpost.value
     console.log(text)
      createPost(db, text);
@@ -87,11 +87,14 @@ window.location.hash = '#/wall'
 const createPost = async (db, text) => {
 
   let userName;
+
   if (auth.currentUser.displayName == null) { // displayname
     let separateEmail = auth.currentUser.email.split('@');
     userName = separateEmail[0];
+    console.log(userName)
   } else {
     userName = auth.currentUser.displayName;
+    console.log(userName)
   }
 
 const docRef = await addDoc(collection(db, "post"), {
@@ -103,8 +106,9 @@ const docRef = await addDoc(collection(db, "post"), {
   likesCounter: 0,
 
 }); 
-
+console.log(docRef)
 }
+
 
 //FUNCION PARA MOSTRAR POSTS CON NOMBRE DE USUARIA
 
@@ -113,12 +117,14 @@ const showPost = async () => {
   const postAll = query(collection(db, "post"), orderBy("datepost", "desc"));
   const querySnapshot = await getDocs(postAll);
 
+   
   // CONTAINER PARA LOS POSTS
   
   let postContainer = document.createElement("div");
   postContainer.setAttribute("id", "postContainer");
   postContainer.setAttribute("class", "postContainer");
-  // postContainer.innerHTML= "";
+
+  postContainer.innerHTML = ''
   querySnapshot.forEach((documento) => {
 
     //aquí creamos los componentes que contendrán cada nueva publicación y que serán recorridos por el ciclo
